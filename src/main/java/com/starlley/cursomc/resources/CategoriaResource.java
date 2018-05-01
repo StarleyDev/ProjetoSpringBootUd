@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.starlley.cursomc.domain.Categoria;
 import com.starlley.cursomc.services.CategoriaService;
 
+import javassist.tools.rmi.ObjectNotFoundException;
+
 @RestController
 @RequestMapping(value = "/categorias") // endpoint //
 public class CategoriaResource {
@@ -25,9 +27,9 @@ public class CategoriaResource {
 	// EndPont retornando o ID //
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	// PathVariable faz com que o ID va para a variavel //
-	public ResponseEntity<?> find(@PathVariable Integer id) {
+	public ResponseEntity<?> find(@PathVariable Integer id) throws Throwable {
 
-		Categoria obj = service.buscar(id);
+		Categoria obj = service.find(id);
 
 		return ResponseEntity.ok().body(obj);
 

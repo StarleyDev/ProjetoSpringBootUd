@@ -14,6 +14,8 @@ import javax.persistence.ManyToMany;
 
 import org.hibernate.annotations.ManyToAny;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Produto implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -25,11 +27,9 @@ public class Produto implements Serializable {
 	private Double preco;
 
 	@ManyToMany //
+	@JsonBackReference // Ira omitir as categorias //
 	// Define qual tabela ira usar o * para * e junta duas tabelas no banco de dados
-
-	@JoinTable(name = "PRODUTO_CATEGORIA",
-	joinColumns = @JoinColumn(name = "produto_id"), 
-	inverseJoinColumns = @JoinColumn(name = "categoria_id"))
+	@JoinTable(name = "PRODUTO_CATEGORIA", joinColumns = @JoinColumn(name = "produto_id"), inverseJoinColumns = @JoinColumn(name = "categoria_id"))
 	// Lista de Categorias //
 	private List<Categoria> categorias = new ArrayList<>();
 

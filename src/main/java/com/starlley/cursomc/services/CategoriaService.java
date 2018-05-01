@@ -2,6 +2,7 @@ package com.starlley.cursomc.services;
 
 import java.util.Optional; // Obrigatorio no Java 8 //
 
+import com.starlley.cursomc.services.exceptions.ObjetcNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.starlley.cursomc.domain.Categoria;
@@ -17,12 +18,13 @@ public class CategoriaService {
 	private CategoriaRepository repo;
 
 	// Criando um metodo de busca //
-	public Categoria buscar(Integer id) {
+	public Categoria find(Integer id) {
 
 		Optional<Categoria> obj = repo.findById(id); // Realizando busca no banco de dados //
 
-		// Se o objeto for encontrado ele e instanciado, se não ele retorna nulo //
-		return obj.orElse(null);
+		// Se o objeto for encontrado ele e instanciado, se não ele retorna a msg //
+		return obj.orElseThrow(() -> new ObjetcNotFoundException(
+				"Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
 
 	}
 

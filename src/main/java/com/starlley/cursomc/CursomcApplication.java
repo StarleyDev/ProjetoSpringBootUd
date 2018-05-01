@@ -9,10 +9,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.starlley.cursomc.domain.Categoria;
 import com.starlley.cursomc.domain.Cidade;
+import com.starlley.cursomc.domain.Cliente;
 import com.starlley.cursomc.domain.Estado;
 import com.starlley.cursomc.domain.Produto;
+import com.starlley.cursomc.domain.Endereco;
+import com.starlley.cursomc.domain.enums.TipoCliente;
 import com.starlley.cursomc.repositories.CategoriaRepository;
 import com.starlley.cursomc.repositories.CidadeRepository;
+import com.starlley.cursomc.repositories.ClienteRepository;
+import com.starlley.cursomc.repositories.EnderecoRepository;
 import com.starlley.cursomc.repositories.EstadoRepository;
 import com.starlley.cursomc.repositories.ProdutoRepository;
 
@@ -31,6 +36,10 @@ public class CursomcApplication implements CommandLineRunner {
 	private EstadoRepository estadoRepository;
 	@Autowired
 	private CidadeRepository cidadeRepository;
+	@Autowired
+	private ClienteRepository clienteRepository;
+	@Autowired
+	private EnderecoRepository enderecoRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -69,6 +78,19 @@ public class CursomcApplication implements CommandLineRunner {
 		// Salvando os estados e cidades //
 		estadoRepository.saveAll(Arrays.asList(est1, est2));
 		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3));
+
+		Cliente cli1 = new Cliente(null, "Maria Silva", "maria@gmail.com", "36378912377", TipoCliente.PESSOAFISICA);
+		Cliente cli2 = new Cliente(null, "Starley Cazorla", "stca@gmail.com", "73672564167",
+				TipoCliente.PESSOAJURIDICA);
+		cli1.getTelefones().addAll(Arrays.asList("27363323", "93838393"));
+		cli2.getTelefones().addAll(Arrays.asList("981615600", "39261285"));
+		Endereco e1 = new Endereco(null, "Rua Flores", "300", "Apt 303", "Jardim", "38220834", cli1, c1);
+		Endereco e2 = new Endereco(null, "Avenida Matos", "105", "Sala 800", "Centro", "38777012", cli1, c2);
+		Endereco e3 = new Endereco(null, "Rua 8", "1", "Qd L1 Lt 7", "Vila Pedroso", "74770200", cli2, c2);
+		cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
+
+		clienteRepository.saveAll(Arrays.asList(cli1, cli2));
+		enderecoRepository.saveAll(Arrays.asList(e1, e2, e3));
 
 	}
 }

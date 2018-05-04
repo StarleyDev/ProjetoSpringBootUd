@@ -23,6 +23,7 @@ public class Categoria implements Serializable {
 	private Integer id;
 	private String nome;
 
+	// Associações //
 	// Lista de produtos //
 	@JsonManagedReference // Avisando ao Json que esta Ok serializar produtos //
 	@ManyToMany(mappedBy = "categorias") // Feito o mapeamento //

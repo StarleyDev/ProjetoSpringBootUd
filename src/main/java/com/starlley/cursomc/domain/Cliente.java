@@ -32,9 +32,15 @@ public class Cliente implements Serializable {
 	private String cpfOuCnpj;
 	private Integer tipo;
 
+	// Associações //
+	// Endreços //
 	@JsonManagedReference // Cliente pode serealizar os endereços //
 	@OneToMany(mappedBy = "cliente") // Sendo mapeado pelo endereço //
 	private List<Endereco> enderecos = new ArrayList<>();
+
+	// Pedidos //
+	@OneToMany(mappedBy = "cliente")
+	private List<Pedido> pedidos = new ArrayList<>();
 
 	// Usando o Set para gravar os telefones //
 	@ElementCollection
@@ -52,6 +58,14 @@ public class Cliente implements Serializable {
 		this.emial = emial;
 		this.cpfOuCnpj = cpfOuCnpj;
 		this.tipo = tipo.getCod();
+	}
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
 	}
 
 	public Integer getId() {

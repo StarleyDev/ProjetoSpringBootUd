@@ -26,6 +26,7 @@ public class Produto implements Serializable {
 	private String nome;
 	private Double preco;
 
+	// Associações //
 	@ManyToMany //
 	@JsonBackReference // Ira omitir as categorias //
 	// Define qual tabela ira usar o * para * e junta duas tabelas no banco de dados

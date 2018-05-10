@@ -11,7 +11,7 @@ import com.starlley.cursomc.domain.Cliente;
 import com.starlley.cursomc.services.ClienteService;
 
 @RestController
-@RequestMapping(value = "/pedido") // endpoint //
+@RequestMapping(value = "/clientes") // endpoint //
 public class ClienteResource {
 
 	@Autowired

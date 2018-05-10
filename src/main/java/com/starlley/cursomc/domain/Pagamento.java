@@ -10,8 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.starlley.cursomc.domain.enums.EstadoPagamento;
 
 // Criando classe de pagamento //
@@ -26,7 +25,9 @@ public abstract class Pagamento implements Serializable {
 	private Integer estado;
 
 	// Associações //
+
 	// Pedido //
+	@JsonBackReference
 	@OneToOne
 	@JoinColumn(name = "pedido_id")
 	@MapsId // Mapear ID //

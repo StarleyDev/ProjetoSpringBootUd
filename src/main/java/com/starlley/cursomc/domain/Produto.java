@@ -15,9 +15,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.ManyToAny;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Produto implements Serializable {
@@ -30,6 +30,7 @@ public class Produto implements Serializable {
 	private Double preco;
 
 	// Associações //
+
 	@ManyToMany //
 	@JsonBackReference // Ira omitir as categorias //
 	// Define qual tabela ira usar o * para * e junta duas tabelas no banco de dados
@@ -37,6 +38,7 @@ public class Produto implements Serializable {
 	// Lista de Categorias //
 	private List<Categoria> categorias = new ArrayList<>();
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "id.produto")
 	private Set<ItemPedido> itens = new HashSet<>();
 
@@ -54,6 +56,7 @@ public class Produto implements Serializable {
 	}
 
 	// Criando uma lista para varrer os itens pedidos //
+	@JsonIgnore // Para ignorar a lista de pedidos //
 	public List<Pedido> getPedidos() {
 		List<Pedido> lista = new ArrayList<>();
 

@@ -17,7 +17,7 @@ public class CategoriaService {
 	@Autowired
 	private CategoriaRepository repo;
 
-	// Criando um metodo de busca //
+	// Criando um metodo de busca e verifica se ele existe //
 	public Categoria find(Integer id) {
 
 		Optional<Categoria> obj = repo.findById(id); // Realizando busca no banco de dados //
@@ -38,4 +38,12 @@ public class CategoriaService {
 
 	}
 
+	// Metodo de atualização de categoria //
+	public Categoria update(Categoria obj) {
+
+		// Objeto para verificar //
+		find(obj.getId());
+
+		return repo.save(obj);
+	}
 }

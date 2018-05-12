@@ -2,8 +2,6 @@ package com.starlley.cursomc.resources;
 
 import java.net.URI;
 
-import javax.servlet.Servlet;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,7 +24,7 @@ public class CategoriaResource {
 	// EndPont retornando o ID //
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	// PathVariable faz com que o ID va para a variavel //
-	public ResponseEntity<?> find(@PathVariable Integer id) throws Throwable {
+	public ResponseEntity<Categoria> find(@PathVariable Integer id) throws Throwable {
 
 		Categoria obj = service.find(id);
 
@@ -44,4 +42,13 @@ public class CategoriaResource {
 		return ResponseEntity.created(uri).build();
 	}
 
+	// Atualizando a categoria no banco de dados //
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody Categoria obj, @PathVariable Integer id) {
+		obj.setId(id);
+		obj = service.update(obj);
+
+		return ResponseEntity.noContent().build();
+
+	}
 }

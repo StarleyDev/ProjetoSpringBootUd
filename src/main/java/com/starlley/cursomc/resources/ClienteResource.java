@@ -19,7 +19,7 @@ public class ClienteResource {
 
 	// EndPont retornando o ID //
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> find(@PathVariable Integer id) throws Throwable {
+	public ResponseEntity<Cliente> find(@PathVariable Integer id) throws Throwable {
 
 		Cliente obj = service.find(id);
 

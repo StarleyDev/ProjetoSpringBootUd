@@ -28,4 +28,14 @@ public class CategoriaService {
 
 	}
 
+	// Metodo de inserir uma categoria //
+	public Categoria insert(Categoria obj) {
+
+		// Objeto novo deve ter o id nulo //
+		obj.setId(null);
+
+		return repo.save(obj);
+
+	}
+
 }

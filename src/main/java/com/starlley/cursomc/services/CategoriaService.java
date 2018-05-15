@@ -2,6 +2,9 @@ package com.starlley.cursomc.services;
 
 import java.util.Optional; // Obrigatorio no Java 8 //
 
+import org.springframework.dao.DataIntegrityViolationException;
+
+import com.starlley.cursomc.services.exceptions.DataIntegrityException;
 import com.starlley.cursomc.services.exceptions.ObjetcNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,5 +48,20 @@ public class CategoriaService {
 		find(obj.getId());
 
 		return repo.save(obj);
+	}
+
+	// Metodo de deletar //
+	public void delete(Integer id) {
+
+		find(id);
+
+		try {
+			repo.deleteById(id);
+
+		} catch (DataIntegrityViolationException e) {
+
+			throw new DataIntegrityException("Não e possivel excluir uma categoria que possui produtos!");
+		}
+
 	}
 }

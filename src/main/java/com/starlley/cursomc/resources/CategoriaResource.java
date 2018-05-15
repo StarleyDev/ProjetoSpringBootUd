@@ -51,4 +51,11 @@ public class CategoriaResource {
 		return ResponseEntity.noContent().build();
 
 	}
+
+	// Deletando Categoria do banco de dados //
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> delete(@PathVariable Integer id) {
+		service.delete(id);
+		return ResponseEntity.noContent().build();
+	}
 }

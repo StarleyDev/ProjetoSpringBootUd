@@ -1,5 +1,6 @@
 package com.starlley.cursomc.services;
 
+import java.util.List;
 import java.util.Optional; // Obrigatorio no Java 8 //
 
 import org.springframework.dao.DataIntegrityViolationException;
@@ -62,6 +63,13 @@ public class CategoriaService {
 
 			throw new DataIntegrityException("Não e possivel excluir uma categoria que possui produtos!");
 		}
+
+	}
+
+	// Mostrando todas as categorias //
+	public List<Categoria> findAll() {
+
+		return repo.findAll();
 
 	}
 }

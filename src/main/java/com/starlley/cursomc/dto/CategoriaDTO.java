@@ -1,7 +1,8 @@
 package com.starlley.cursomc.dto;
 
 import java.io.Serializable;
-
+import javax.validation.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Length;
 import com.starlley.cursomc.domain.Categoria;
 
 public class CategoriaDTO implements Serializable {
@@ -10,6 +11,10 @@ public class CategoriaDTO implements Serializable {
 
 	// Define os dados que irão retornar de um BD //
 	private Integer id;
+	
+	// Validações sintaticas //
+	@NotEmpty(message="Preenchimento obrigatório!")
+	@Length(min=5, max=80, message="O tamanho deve ser entre 5 a 80 caracteres!")
 	private String nome;
 
 	public CategoriaDTO() {
@@ -18,6 +23,7 @@ public class CategoriaDTO implements Serializable {
 
 	public CategoriaDTO(Categoria obj) {
 
+		
 		id = obj.getId();
 		nome = obj.getNome();
 

@@ -1,5 +1,6 @@
 package com.starlley.cursomc.resources;
 
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.starlley.cursomc.domain.Cliente;
 import com.starlley.cursomc.dto.ClienteDTO;
+import com.starlley.cursomc.dto.ClienteNewDTO;
 import com.starlley.cursomc.services.ClienteService;
 
 @RestController
@@ -33,6 +36,18 @@ public class ClienteResource {
 		Cliente obj = service.find(id);
 
 		return ResponseEntity.ok().body(obj);
+	}
+
+	// Inserindo a categoria no banco de dados //
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Void> insert(@Valid @RequestBody ClienteNewDTO objDto) {
+		Cliente obj = service.fromDTO(objDto);
+		obj = service.insert(obj);
+		// Pegando a URI do novo recurso para retornar uma nova resposta //
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+		// Gerando codigo 201 "Created" //
+		return ResponseEntity.created(uri).build();
+
 	}
 
 	// Atualizando a Cliente no banco de dados //

@@ -11,7 +11,6 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.starlley.cursomc.domain.Categoria;
-import com.starlley.cursomc.domain.Cliente;
 import com.starlley.cursomc.dto.CategoriaDTO;
 import com.starlley.cursomc.repositories.CategoriaRepository;
 import com.starlley.cursomc.services.exceptions.DataIntegrityException;

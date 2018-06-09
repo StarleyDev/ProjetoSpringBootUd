@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.starlley.cursomc.domain.Categoria;
+import com.starlley.cursomc.domain.Cliente;
 import com.starlley.cursomc.dto.CategoriaDTO;
 import com.starlley.cursomc.repositories.CategoriaRepository;
 import com.starlley.cursomc.services.exceptions.DataIntegrityException;
@@ -50,9 +51,10 @@ public class CategoriaService {
 	public Categoria update(Categoria obj) {
 
 		// Objeto para verificar //
-		find(obj.getId());
+		Categoria newObj = find(obj.getId());
+		updateData(newObj, obj);
 
-		return repo.save(obj);
+		return repo.save(newObj);
 	}
 
 	// Metodo de deletar //
@@ -89,6 +91,13 @@ public class CategoriaService {
 	public Categoria fromDTO(CategoriaDTO objDto) {
 
 		return new Categoria(objDto.getId(), objDto.getNome());
+
+	}
+
+	// Somente será realizado o update //
+	private void updateData(Categoria newObj, Categoria obj) {
+
+		newObj.setNome(obj.getNome());
 
 	}
 }

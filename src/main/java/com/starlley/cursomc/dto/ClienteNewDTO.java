@@ -2,22 +2,48 @@ package com.starlley.cursomc.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
+import com.starlley.cursomc.services.validation.ClienteInsert;
+
+// Anotação ClienteInsert e para realizar a validação de campos //
+
+@ClienteInsert
 public class ClienteNewDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	// Validações sintaticas //
+	@NotEmpty(message = "Preenchimento obrigatorio!")
+	@Length(min = 5, max = 120, message = "O tamenho deve ser entre 5 e 120 caracteres!")
 	private String nome;
+
+	@NotEmpty(message = "Preenchimento obrigatorio!")
+	@Email(message = "Email invalido!")
 	private String email;
+
+	@NotEmpty(message = "Preenchimento obrigatorio!")
 	private String cpfOuCnpj;
 	private Integer tipo;
 
+	@NotEmpty(message = "Preenchimento obrigatorio!")
 	private String logradouro;
+
+	@NotEmpty(message = "Preenchimento obrigatorio!")
 	private String numero;
+
 	private String complemento;
 	private String bairro;
+
+	@NotEmpty(message = "Preenchimento obrigatorio!")
 	private String cep;
 
+	@NotEmpty(message = "Preenchimento obrigatorio!")
 	private String telefone1;
+
 	private String telefone2;
 	private String telefone3;
 

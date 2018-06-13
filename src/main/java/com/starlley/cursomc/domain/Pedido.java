@@ -58,6 +58,21 @@ public class Pedido implements Serializable {
 		this.enderecoDeEntrega = enderecoDeEntrega;
 	}
 
+	// Metodo para retornar a soma de todos os itens do pedido //
+	public Double getValorTotal() {
+
+		double soma = 0.0;
+
+		for (ItemPedido ip : itens) {
+
+			soma = soma + ip.getSubTotal();
+
+		}
+
+		return soma;
+
+	}
+
 	// Getter and Setters //
 	public Set<ItemPedido> getItens() {
 		return itens;

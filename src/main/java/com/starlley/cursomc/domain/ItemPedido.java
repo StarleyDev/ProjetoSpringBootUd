@@ -33,6 +33,13 @@ public class ItemPedido implements Serializable {
 		this.preco = preco;
 	}
 
+	// Metodo que retorna a soma dos produtos //
+	public Double getSubTotal() {
+
+		return (preco - desconto) * quantidade;
+
+	}
+
 	// Criando dois metodos de retorno para acesso fora da classe //
 	@JsonIgnore
 	public Pedido getPedido() {

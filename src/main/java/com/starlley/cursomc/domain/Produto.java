@@ -15,7 +15,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-import org.springframework.data.domain.Sort;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

@@ -9,7 +9,6 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.web.servlet.result.HandlerResultMatchers;
 import org.springframework.web.servlet.HandlerMapping;
 
 import com.starlley.cursomc.domain.Cliente;

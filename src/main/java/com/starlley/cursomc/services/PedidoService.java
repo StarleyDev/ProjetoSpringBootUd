@@ -14,7 +14,6 @@ import com.starlley.cursomc.domain.enums.EstadoPagamento;
 import com.starlley.cursomc.repositories.ItemPedidoRepository;
 import com.starlley.cursomc.repositories.PagamentoRepository;
 import com.starlley.cursomc.repositories.PedidoRepository;
-import com.starlley.cursomc.repositories.ProdutoRepository;
 import com.starlley.cursomc.services.exceptions.ObjetcNotFoundException;
 
 @Service

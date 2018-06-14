@@ -6,7 +6,6 @@ import java.util.List;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import com.starlley.cursomc.domain.Cliente;
 import com.starlley.cursomc.domain.enums.TipoCliente;
 import com.starlley.cursomc.dto.ClienteNewDTO;
 import com.starlley.cursomc.resources.exceptions.FieldMessage;

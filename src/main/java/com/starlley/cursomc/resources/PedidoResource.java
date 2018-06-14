@@ -13,11 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.starlley.cursomc.domain.Categoria;
-import com.starlley.cursomc.domain.Cliente;
 import com.starlley.cursomc.domain.Pedido;
-import com.starlley.cursomc.dto.CategoriaDTO;
-import com.starlley.cursomc.dto.ClienteNewDTO;
 import com.starlley.cursomc.services.PedidoService;
 
 @RestController
@@ -37,7 +33,7 @@ public class PedidoResource {
 
 	}
 
-	// Inserindo a categoria no banco de dados //
+	// Inserindo o pedido no banco de dados //
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody Pedido obj) {
 		obj = service.insert(obj);

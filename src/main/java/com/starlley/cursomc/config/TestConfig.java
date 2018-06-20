@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import com.starlley.cursomc.services.DBService;
+import com.starlley.cursomc.services.EmailService;
+import com.starlley.cursomc.services.MockEmailService;
 
 @Configuration
 @Profile("test")
@@ -24,6 +26,13 @@ public class TestConfig {
 		dbService.instantiateTestDataBase();
 
 		return true;
+	}
+
+	// BEAN de email //
+
+	@Bean
+	public EmailService emailService() {
+		return new MockEmailService();
 	}
 
 }

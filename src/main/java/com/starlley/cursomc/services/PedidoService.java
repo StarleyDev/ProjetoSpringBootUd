@@ -80,8 +80,13 @@ public class PedidoService {
 		}
 
 		itemPedidoRepository.saveAll(obj.getItens());
-		//System.out.println(obj);
-		emailService.sendOrderConfirmationEmail(obj);
+		// System.out.println(obj);
+
+		// Metodo envia email em formato txt //
+		// emailService.sendOrderConfirmationEmail(obj);
+
+		// Metodo envia email em formato HTML //
+		emailService.sendOrderConfirmationHtmlEmail(obj);
 		return obj;
 	}
 

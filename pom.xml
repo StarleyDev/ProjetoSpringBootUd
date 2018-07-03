@@ -15,7 +15,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.1.RELEASE</version>
+		<version>2.0.3.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
@@ -69,6 +69,19 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+		<!-- Dependencia do Spring Security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<!-- Dependencia do Json Token -->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.8.0</version>
 		</dependency>
 
 	</dependencies>

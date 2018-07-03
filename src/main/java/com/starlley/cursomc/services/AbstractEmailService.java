@@ -69,15 +69,15 @@ public abstract class AbstractEmailService implements EmailService {
 
 		// Ira tentar enviar o email com formato HTML //
 		try {
-		MimeMessage mm = prepareMimeMessageFromPedido(obj);
-		sendHtmlEmail(mm);
-		
-		// Caso não de certo, ira mandar no formato txt //
-		}catch(MessagingException ex) {
-			
-			sendOrderConfirmationEmail(obj);			
+			MimeMessage mm = prepareMimeMessageFromPedido(obj);
+			sendHtmlEmail(mm);
+
+			// Caso não de certo, ira mandar no formato txt //
+		} catch (MessagingException ex) {
+
+			sendOrderConfirmationEmail(obj);
 		}
-		
+
 	}
 
 	protected MimeMessage prepareMimeMessageFromPedido(Pedido obj) throws MessagingException {
